@@ -22,7 +22,7 @@ struct ppm_pixel* read_ppm(const char* filename, int* w, int* h) {
   fgets(line, sizeof(line), file);
   fgets(line, sizeof(line), file);
   
-  fscanf(file, " %d %d", w, h); // read the width and height
+  fscanf(file, " %d %d\n", w, h); // read the width and height
   fgets(line, sizeof(line), file); // skip line of the max brightness
   
   // Allocate the array of ppm_pixel in heap

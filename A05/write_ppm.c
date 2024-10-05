@@ -11,7 +11,7 @@
 
 void write_ppm(const char* filename, struct ppm_pixel* pixels, int w, int h) {
     FILE* file = fopen(filename, "wb");
-    fprintf(file, "P6\n# Created by write_ppm method \n");
+    fprintf(file, "P6\n# Created by write_ppm method\n");
     fprintf(file, "%i %i \n255\n", w, h);
     fwrite(pixels, sizeof(struct ppm_pixel), w * h, file);
     fclose(file);
