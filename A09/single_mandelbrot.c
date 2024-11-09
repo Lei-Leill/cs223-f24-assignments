@@ -1,3 +1,9 @@
+/*----------------------------------------------
+ * Author: Lei Lei
+ * Date: 11/08
+ * Description: Outputs a PPM image of the mandelbrot set. 
+ ---------------------------------------------*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -75,7 +81,6 @@ int main(int argc, char* argv[]) {
   snprintf(filename, sizeof(filename), "mandelbrot-%d-%ld.ppm", size, time(0));
   printf("Writing file: %s\n", filename);
   write_ppm(filename, board, size, size);
-  //write_ppm(filename, board, size, size);
   free(pallete);
   free(board);
   return 0;
