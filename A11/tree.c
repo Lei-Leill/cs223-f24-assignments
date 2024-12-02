@@ -1,71 +1,8 @@
-/*#include "tree.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
-
-struct tree_node* find(const char* name, struct tree_node* root)
-{
-  printf("Entered find() with name=\"%s\" and root=\'%p\'\n", name, root);
-  if (root == NULL){
-    return NULL;
-  }
-  if (strncmp(name, root->data.name,1) < 0){
-    printf("left %s", root->data.name);
-    return find(name, root->left);
-  }
-  if (strncmp(name, root->data.name,1) > 0){
-    printf("right %s", root->data.name);
-    return find(name, root->right);
-  }
-  return root;
-}
-
-struct tree_node* insert(const char* name, struct tree_node* root)
-{
-  if(root == NULL){
-    root = malloc(sizeof(struct tree_node*));
-    strcpy(root->data.name, name);
-    root->left = NULL;
-    root->right = NULL;
-  }
-  else if (strncmp(name, root->data.name, 1) < 0){
-    root->left = insert(name, root->left);
-  }
-  else{
-    root->right = insert(name, root->right);
-  }
-  return root;
-}
-
-void clear(struct tree_node* root)
-{
-  if (root == NULL) return;
-  clear(root->left);
-  clear(root->right);
-  free(root);
-}
-
-void print(struct tree_node* root)
-{
-  if(root == NULL){
-    return;
-  }
-  printf("%s\n", root->data.name);
-  if (root->left != NULL){
-    printf("  l:");
-    print(root->left);
-  }
-  if (root->right != NULL){
-    printf("  r:");
-    print(root->right);
-  }
-
-}
-
-void printSorted(struct tree_node* root)
-{
-}
-*/
+/*----------------------------------------------
+ * Author: Lei Lei
+ * Date: 11/29
+ * Description: Implement tree structure
+ ---------------------------------------------*/
 
 #include <stdio.h>
 #include <stdlib.h>
