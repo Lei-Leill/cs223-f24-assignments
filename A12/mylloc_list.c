@@ -44,6 +44,7 @@ void *malloc (size_t size) {
     struct chunk* cnk = (struct chunk*) (memory);
     cnk->size = size; 
     cnk->used = size;
+    cnk->next = NULL;
     return (void*) (cnk + 1);
   }
   return NULL;
