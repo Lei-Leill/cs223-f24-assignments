@@ -1,3 +1,9 @@
+/*----------------------------------------------
+ * Author: Lei Lei
+ * Date: 12/04
+ * Description: Print Memory Statistics
+ ---------------------------------------------*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -17,6 +23,31 @@ struct chunk {
 };
 
 void memstats(struct chunk* freelist, void* buffer[], int len) {
+  int used_block = 0;
+  int free_block = 0;
+  
+  int free_mem = 0;
+  int used_mem = 0; 
+  int under_utilzed = 0;
+  for(int i = 0; i < len; i ++){
+    if (buffer[i] != NULL){
+      used_block += 1;
+      struct chunk* cur = (struct chunk*)buffer[i] - 1;
+      used_mem += cur->size;
+      under_utilzed += cur->size - cur->used;
+    
+    }
+  }
+  struct chunk* current = freelist;
+  while(current != NULL){
+    free_block += 1;
+    free_mem += current->size;
+    current = current->next;
+  }
+  printf("Total Blocks: %d;  Free Blocks: %d;  Used Blocks: %d\n", used_block + free_block, free_block, used_block);
+  printf("Total Memory: %d;  Free Memory: %d;  Used Memory: %d\n", used_mem + free_mem, free_mem, used_mem);
+  double percent = (double)under_utilzed/ used_mem;
+  printf("Underutilized Memory: %.2f \n", percent);
 }
 
 int main ( int argc, char* argv[]) {
